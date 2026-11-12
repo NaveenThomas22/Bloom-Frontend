@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 168 189 165; /* #A8BDA5 */
+    --color-forest: 64 91 73;     /* #405B49 */
+    --color-ivory: 248 245 235;   /* #F8F5EB */
+    --color-mint: 220 233 217;    /* #DCE9D9 */
+    --color-rose: 233 201 197;    /* #E9C9C5 */
+    --color-beige: 233 224 209;   /* #E9E0D1 */
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer components {
+  /* Sage Garden Glass & Cards */
+  .sage-card {
+    @apply bg-white/90 dark:bg-dark-card/90 backdrop-blur-sm border border-sage-200/60 dark:border-dark-border rounded-3xl shadow-soft transition-all duration-300;
+  }
+
+  .sage-card-hover {
+    @apply sage-card hover:shadow-soft-lg hover:border-sage-300 dark:hover:border-sage-700/60;
+  }
+
+  /* Botanical accent pill */
+  .botanical-pill {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-mint/50 text-forest dark:bg-dark-surface dark:text-sage-300 border border-sage-200/60 dark:border-dark-border;
+  }
+
+  /* Primary Button */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-medium text-white bg-forest hover:bg-forest-light active:scale-[0.98] transition-all duration-200 shadow-soft disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-medium text-forest dark:text-sage-200 bg-white dark:bg-dark-surface border border-sage-200 dark:border-dark-border hover:bg-sage-50 dark:hover:bg-dark-card active:scale-[0.98] transition-all duration-200;
+  }
+
+  /* Gentle Input */
+  .input-field {
+    @apply w-full px-4 py-3.5 rounded-2xl bg-white/80 dark:bg-dark-surface border border-sage-200 dark:border-dark-border text-sage-950 dark:text-dark-text placeholder:text-sage-400 dark:placeholder:text-dark-muted focus:outline-none focus:ring-2 focus:ring-sage-400/50 focus:border-sage-400 transition-all duration-200;
+  }
+}
+
+/* Custom delicate scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 189, 165, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(64, 91, 73, 0.5);
+}
+
