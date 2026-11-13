@@ -1,0 +1,20 @@
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mindex 845bd45..5daced5 100644[m
+[1m--- a/package-lock.json[m
+[1m+++ b/package-lock.json[m
+[36m@@ -20,7 +20,6 @@[m
+         "zustand": "^5.0.3"[m
+       },[m
+       "devDependencies": {[m
+[31m-        "@rollup/rollup-win32-x64-msvc": "^4.67.4",[m
+         "@testing-library/jest-dom": "^7.0.1",[m
+         "@testing-library/react": "^16.3.3",[m
+         "@testing-library/user-event": "^14.6.8",[m
+[36m@@ -2978,6 +2977,7 @@[m
+       ],[m
+       "dev": true,[m
+       "license": "MIT",[m
+[32m+[m[32m      "optional": true,[m
+       "os": [[m
+         "win32"[m
+       ][m

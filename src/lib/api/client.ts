@@ -1,9 +1,12 @@
 import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios';
 import { useAuthStore } from '@/store/useAuthStore';
 import type { ApiResponse, AuthResponse } from '@/types/auth';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const apiClient = axios.create({
-  baseURL: '/api/v1',
+  baseURL: API_BASE_URL
+    ? `${API_BASE_URL.replace(/\/+$/, '')}/api/v1`
+    : '/api/v1',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -73,14 +76,15 @@ apiClient.interceptors.response.use(
           })
           .catch((err) => Promise.reject(err));
       }
+      console.log("cat error")
 
       originalRequest._retry = true;
       isRefreshing = true;
 
       try {
         // Silent refresh using the HttpOnly cookie
-        const response = await axios.post<ApiResponse<AuthResponse>>(
-          '/api/v1/auth/refresh',
+        const response = await apiClient.post<ApiResponse<AuthResponse>>(
+          '/auth/refresh',
           {},
           {
             withCredentials: true,
@@ -89,7 +93,6 @@ apiClient.interceptors.response.use(
             },
           }
         );
-
         const newAccessToken = response.data.data.accessToken;
         useAuthStore.getState().setAccessToken(newAccessToken);
 
